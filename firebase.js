@@ -8,8 +8,7 @@ const firebaseConfig = {
   projectId: "dimans-usdt-invest",
   storageBucket: "dimans-usdt-invest.firebasestorage.app",
   messagingSenderId: "744128222079",
-  appId: "1:744128222079:web:57e5c70eff9339fbf3c04a",
-  measurementId: "G-RCB51FKQ3T"
+  appId: "1:744128222079:web:57e5c70eff9339fbf3c04a"
 };
 
 const app = initializeApp(firebaseConfig);
