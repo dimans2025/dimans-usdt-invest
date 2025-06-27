@@ -1,11 +1,16 @@
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
 export default function Home() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+  }, []);
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Добро пожаловать в USDT Invest</h1>
-      <p>Инвестируйте в USDT под 1% в день. Минимум: 1 USDT.</p>
-      <p>TRC20-кошелёк: <strong>TD19DdRMpApXtcGf197fet6qjKmmBtRGWy</strong></p>
-      <p><Link href="/login">Войти</Link> или <Link href="/register">Зарегистрироваться</Link></p>
+    <div style={{ padding: "2rem" }}>
+      <h1>USDT Invest</h1>
+      <p>{user ? `Привет, ${user.email}` : "Войдите в аккаунт"}</p>
     </div>
   );
 }
