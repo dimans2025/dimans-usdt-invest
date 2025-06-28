@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
+import { auth } from '../firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
 import { useRouter } from 'next/router';
 
 export default function Login() {
@@ -8,18 +9,21 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    await signInWithEmailAndPassword(auth, email, password);
-    router.push("/dashboard");
+  const login = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push('/dashboard');
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
-    <form onSubmit={handleLogin} style={{ padding: 20 }}>
-      <h2>Вход</h2>
-      <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-      <input value={password} onChange={e => setPassword(e.target.value)} placeholder="Пароль" type="password" />
-      <button type="submit">Войти</button>
-    </form>
+    <div style={{ padding: 20 }}>
+      <h1>Вход</h1>
+      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} /><br />
+      <input placeholder="Пароль" type="password" onChange={(e) => setPassword(e.target.value)} /><br />
+      <button onClick={login}>Войти</button>
+    </div>
   );
 }

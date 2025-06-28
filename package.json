@@ -1,5 +1,6 @@
+
 {
-  "name": "usdt-invest-full",
+  "name": "usdt-invest",
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
@@ -7,9 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "13.4.12",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "firebase": "^10.7.0"
+    "firebase": "^10.0.0",
+    "next": "^13.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
